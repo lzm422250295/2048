@@ -99,9 +99,9 @@ namespace _2048
                 for (int r = 0; r < map.GetLength(0); r++)
                 {
                     //Console.WriteLine(map[r, c]);
-                    Console.WriteLine(getCol(c, map)[r]);
-
+                    Console.WriteLine(getArr(getCol(c, map))[r] + "\t");
                 }
+                    Console.WriteLine();
             }
 
             //for (int r = 0; r < map.GetLength(0); r++)

@@ -1,0 +1,13 @@
+X:\game\2048\2048\bin\Debug\netcoreapp3.1\2048.exe
+X:\game\2048\2048\bin\Debug\netcoreapp3.1\2048.deps.json
+X:\game\2048\2048\bin\Debug\netcoreapp3.1\2048.runtimeconfig.json
+X:\game\2048\2048\bin\Debug\netcoreapp3.1\2048.runtimeconfig.dev.json
+X:\game\2048\2048\bin\Debug\netcoreapp3.1\2048.dll
+X:\game\2048\2048\bin\Debug\netcoreapp3.1\2048.pdb
+X:\game\2048\2048\obj\Debug\netcoreapp3.1\2048.csprojAssemblyReference.cache
+X:\game\2048\2048\obj\Debug\netcoreapp3.1\2048.AssemblyInfoInputs.cache
+X:\game\2048\2048\obj\Debug\netcoreapp3.1\2048.AssemblyInfo.cs
+X:\game\2048\2048\obj\Debug\netcoreapp3.1\2048.csproj.CoreCompileInputs.cache
+X:\game\2048\2048\obj\Debug\netcoreapp3.1\2048.dll
+X:\game\2048\2048\obj\Debug\netcoreapp3.1\2048.pdb
+X:\game\2048\2048\obj\Debug\netcoreapp3.1\2048.genruntimeconfig.cache
