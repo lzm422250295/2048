@@ -26,10 +26,6 @@ namespace _2048
         {
             Fun2048 Fun2048 = new Fun2048();
 
-
-
-
-
             int[,] map = new int[4, 6] {
                 {2,0,4,16,2,4},
                 {2,4,0,16,2,2},
@@ -37,7 +33,6 @@ namespace _2048
                 {8,4,2,16,2,4},
             };
 
-            Fun2048.MoveDown(map);
             //foreach (int item in getArr(getCol(3, map)))
             //{
             //    Console.WriteLine(item);
@@ -52,16 +47,39 @@ namespace _2048
             //        map[i,c] = arr[i];
             //    }
             //}
-
-            for (int r = 0; r < map.GetLength(0); r++)
-            {
-                for (int c = 0; c < map.GetLength(1); c++)
+            void start(){
+                var key = Console.Read();
+                ConsoleKeyInfo info = Console.ReadKey();
+                Console.WriteLine(info.Key);
+                switch (info.Key)
                 {
-                    Console.Write(map[r, c] + "\t");
+                    case ConsoleKey.UpArrow:
+                        Fun2048.MoveUp(map);
+                        break;
+                    case ConsoleKey.DownArrow:
+                        Fun2048.MoveDown(map);
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        Fun2048.MoveLeft(map);
+                        break;
+                    case ConsoleKey.RightArrow:
+                        Fun2048.MoveRight(map);
+                        break;
+                    default:
+                        Environment.Exit(0);
+                        break;
                 }
-                Console.WriteLine();
+                for (int r = 0; r < map.GetLength(0); r++)
+                {
+                    for (int c = 0; c < map.GetLength(1); c++)
+                    {
+                        Console.Write(map[r, c] + "\t");
+                    }
+                    Console.WriteLine();
+                }
+                start();
             }
-
+            start();
         }
 
 
@@ -72,29 +90,21 @@ namespace _2048
         private int[] delZeroToRig(int[] arr)
         {
             int lefIndex = 0; //左下标
-            int rigIndex = arr.Length - 1; //右下标
             int[] newArr = new int[arr.Length];
             for (int i = 0; i < arr.Length; i++)
             {
-                if (arr[i] == 0) newArr[rigIndex--] = 0;
-                else newArr[lefIndex++] = arr[i];
+                if (arr[i] != 0) newArr[lefIndex++] = arr[i];
             }
             return newArr;
         }
         //去零到左
         private int[] delZeroToLef(int[] arr)
         {
-            for (int i = 0; i < arr.Length; i++)
-            {
-                Console.WriteLine(arr[i]);
-            }
-            int lefIndex = 0; //左下标
             int rigIndex = arr.Length - 1; //右下标
             int[] newArr = new int[arr.Length];
-            for (int i = 0; i < arr.Length; i++)
+            for (int i = rigIndex; i >= 0; i--)
             {
-                if (arr[i] == 0) newArr[rigIndex--] = arr[i];
-                else newArr[lefIndex++] = 0;
+                if (arr[i] != 0) newArr[rigIndex--] = arr[i];
             }
             return newArr;
         }
@@ -102,11 +112,10 @@ namespace _2048
         //向左合并
         private int[] addLef(ref bool canAdd, int[] newArr)
         {
-            int length = newArr.Length;
+            int length = newArr.Length-1;
             for (int i = 0; i < length; i++)
             {
-                if (i == length - 1) continue;
-                if (newArr[i] == newArr[i + 1] && canAdd == true)
+                if (newArr[i] != 0 && newArr[i] == newArr[i + 1] && canAdd == true)
                 {
                     newArr[i] += newArr[i + 1];
                     newArr[i + 1] = 0;
@@ -119,10 +128,10 @@ namespace _2048
         //向右合并
         private int[] addRig(ref bool canAdd, int[] newArr)
         {
-            int length = newArr.Length;
-            for (int i = (length-1); i > 0; i--)
+            int length = newArr.Length-1;
+            for (int i = length; i > 0; i--)
             {
-                if (newArr[i] == newArr[i - 1] && canAdd == true)
+                if (newArr[i] != 0 && newArr[i] == newArr[i - 1] && canAdd == true)
                 {
                     newArr[i] += newArr[i - 1];
                     newArr[i - 1] = 0;
@@ -158,7 +167,7 @@ namespace _2048
         {
             bool canAdd = true; //合并一次
             int[] array = isUpRig
-                ?delZeroToRig(addLef(ref canAdd, delZeroToRig(arr)))
+                ? delZeroToRig(addLef(ref canAdd, delZeroToRig(arr)))
                 : delZeroToLef(addRig(ref canAdd, delZeroToLef(arr)));
             return array;
         }
@@ -183,6 +192,30 @@ namespace _2048
                 for (int i = 0; i < arr.Length; i++)
                 {
                     array[i, c] = arr[i];
+                }
+            }
+        }
+
+        public void MoveLeft(int[,] array)
+        {
+            for (int r = 0; r < array.GetLength(0); r++)
+            {
+                int[] arr = getArr(getRow(r, array), true);
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    array[r, i] = arr[i];
+                }
+            }
+        }
+
+        public void MoveRight(int[,] array)
+        {
+            for (int r = 0; r < array.GetLength(0); r++)
+            {
+                int[] arr = getArr(getRow(r, array), false);
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    array[r, i] = arr[i];
                 }
             }
         }
