@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8aVQ/hq2GUidp+wiLMpn8tKHfEM1ff3srSa0yiiUUeKhaF6ohcHHIWW8dnom3OAet+8OxJXzFQKRnr2BrdpEDw==",
+  "dgSpecHash": "Xc+jYWm5HB5RdTSaq7uYnA4irqXmrPuucAGvopRrFyaW4I6arzxU6X5pXVswAQCzmiZdmXJ5/+rNhTl9KyIdJQ==",
   "success": true,
-  "projectFilePath": "X:\\game\\2048\\2048\\2048.csproj",
+  "projectFilePath": "/Users/lin/Desktop/game/2048/2048/2048.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
