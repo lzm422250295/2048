@@ -86,6 +86,22 @@ namespace _2048
     }
     class Fun2048
     {
+        private int[] getRange(int[,]arr)
+        {
+            int[] array = new int[] { arr[0, 0], arr[0, 0] };
+            for (int r = 0; r < arr.GetLength(0); r++)
+            {
+                for (int c = 0; c < arr.GetLength(1); c++)
+                {
+                    if (arr[r,c] > array[1])
+                        array[1] = arr[r,c];
+                    if (arr[r,c] < array[0])
+                        array[0] = arr[r,c];
+                }
+            }
+            return array;
+        }
+
         //去零到右
         private int[] delZeroToRig(int[] arr)
         {
